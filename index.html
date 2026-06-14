@@ -380,7 +380,7 @@
     const bookElement = document.getElementById("book");
     const counter = document.getElementById("counter");
     const totalPages = 8;
-
+const mobileMode = window.innerWidth <= 760;
     const pageFlip = new St.PageFlip(bookElement, {
       width: 360,
       height: 540,
@@ -390,7 +390,7 @@
       minHeight: 390,
       maxHeight: 645,
       showCover: false,
-      usePortrait: true,
+      usePortrait: mobileMode,
       mobileScrollSupport: true,
       drawShadow: true,
       maxShadowOpacity: 0.55,
