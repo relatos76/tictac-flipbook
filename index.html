@@ -29,15 +29,15 @@
       overflow-x: hidden;
     }
 
-   .app {
-  width: min(100%, 1360px);
+    .app {
+      width: min(100%, 1360px);
       text-align: center;
     }
 
-   .catalog-shell {
-  position: relative;
-  width: 100%;
-  min-height: 860px;
+    .catalog-shell {
+      position: relative;
+      width: 100%;
+      min-height: 860px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -210,15 +210,16 @@
 
     .control-bar {
       width: 100%;
-      min-height: 58px;
+      min-height: 96px;
       background: #252525;
       border-top: 1px solid rgba(255,255,255,0.08);
       border-radius: 0 0 22px 22px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      padding: 10px 14px;
+      gap: 7px;
+      padding: 10px 14px 12px;
       box-shadow: 0 18px 45px rgba(0,0,0,0.28);
     }
 
@@ -226,13 +227,7 @@
       color: #f5efe7;
       font-size: 0.92rem;
       font-weight: 750;
-      min-width: 82px;
       text-align: center;
-    }
-
-    .hint {
-      color: rgba(255,255,255,0.62);
-      font-size: 0.86rem;
     }
 
     .zoom-group {
@@ -274,6 +269,11 @@
       text-align: left;
     }
 
+    .hint {
+      color: rgba(255,255,255,0.62);
+      font-size: 0.86rem;
+    }
+
     @media (max-width: 760px) {
       body {
         padding: 8px;
@@ -284,6 +284,8 @@
         min-height: 545px;
         padding: 14px 42px 20px;
         border-radius: 16px 16px 0 0;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
       }
 
       .side-arrow {
@@ -301,19 +303,29 @@
       }
 
       .control-bar {
+        min-height: 92px;
         border-radius: 0 0 16px 16px;
-        gap: 7px;
-        padding: 9px 8px;
-        flex-direction: column;
-      }
-
-      .zoom-group {
-        display: none;
+        gap: 6px;
+        padding: 9px 8px 10px;
       }
 
       .counter {
         font-size: 0.84rem;
-        min-width: auto;
+      }
+
+      .zoom-group {
+        display: flex;
+      }
+
+      .zoom-group input,
+      .zoom-label {
+        display: none;
+      }
+
+      .zoom-btn {
+        width: 36px;
+        height: 36px;
+        background: rgba(255,255,255,0.08);
       }
 
       .hint {
@@ -446,23 +458,24 @@
 
     const mobileMode = window.innerWidth <= 760;
 
-   const pageFlip = new St.PageFlip(bookElement, {
-  width: 440,
-  height: 660,
-  size: "stretch",
-  minWidth: 300,
-  maxWidth: 560,
-  minHeight: 450,
-  maxHeight: 840,
-  showCover: true,
-  usePortrait: mobileMode,
-  mobileScrollSupport: false,
-  useMouseEvents: false,
-  drawShadow: true,
-  maxShadowOpacity: 0.55,
-  flippingTime: 1100,
-  startZIndex: 10
-});
+    const pageFlip = new St.PageFlip(bookElement, {
+      width: 440,
+      height: 660,
+      size: "stretch",
+      minWidth: 300,
+      maxWidth: 560,
+      minHeight: 450,
+      maxHeight: 840,
+      showCover: true,
+      usePortrait: mobileMode,
+      mobileScrollSupport: false,
+      useMouseEvents: !mobileMode,
+      drawShadow: true,
+      maxShadowOpacity: 0.55,
+      flippingTime: 1100,
+      startZIndex: 10
+    });
+
     const pageItems = document.querySelectorAll(".book-page");
 
     if (pageFlip.loadFromHTML) {
@@ -496,11 +509,6 @@
     }
 
     function applyZoom(value) {
-      if (isMobileView()) {
-        bookWrap.style.transform = "scale(1)";
-        return;
-      }
-
       const scale = value / 100;
       bookWrap.style.transform = `scale(${scale})`;
       zoomLabel.textContent = `${value}%`;
@@ -512,7 +520,13 @@
 
     window.addEventListener("resize", () => {
       updateCounter(pageFlip.getCurrentPageIndex());
-      applyZoom(Number(zoomRange.value));
+
+      if (isMobileView()) {
+        zoomRange.value = 100;
+        applyZoom(100);
+      } else {
+        applyZoom(Number(zoomRange.value));
+      }
     });
 
     document.getElementById("nextBtn").addEventListener("click", () => {
@@ -545,7 +559,13 @@
     });
 
     updateCounter(0);
-    applyZoom(Number(zoomRange.value));
+
+    if (isMobileView()) {
+      zoomRange.value = 100;
+      applyZoom(100);
+    } else {
+      applyZoom(Number(zoomRange.value));
+    }
   </script>
 </body>
 </html>
