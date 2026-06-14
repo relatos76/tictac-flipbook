@@ -29,19 +29,19 @@
       overflow-x: hidden;
     }
 
-    .app {
-      width: min(100%, 1140px);
+   .app {
+  width: min(100%, 1360px);
       text-align: center;
     }
 
-    .catalog-shell {
-      position: relative;
-      width: 100%;
-      min-height: 760px;
+   .catalog-shell {
+  position: relative;
+  width: 100%;
+  min-height: 860px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 38px 78px 52px;
+      padding: 38px 90px 60px;
       border-radius: 22px 22px 0 0;
       background:
         radial-gradient(circle at center, rgba(255,255,255,0.13), transparent 42%),
@@ -427,9 +427,9 @@
 
       <div class="zoom-group">
         <button class="zoom-btn" id="zoomOut" aria-label="Alejar">−</button>
-        <input id="zoomRange" type="range" min="100" max="130" value="115" step="5" aria-label="Zoom">
+        <input id="zoomRange" type="range" min="100" max="145" value="120" step="5" aria-label="Zoom">
         <button class="zoom-btn" id="zoomIn" aria-label="Acercar">+</button>
-        <span class="zoom-label" id="zoomLabel">115%</span>
+        <span class="zoom-label" id="zoomLabel">120%</span>
       </div>
 
       <div class="hint">Usa las flechas o arrastra la esquina de la página.</div>
@@ -446,14 +446,14 @@
 
     const mobileMode = window.innerWidth <= 760;
 
-    const pageFlip = new St.PageFlip(bookElement, {
-      width: 360,
-      height: 540,
-      size: "stretch",
-      minWidth: 260,
-      maxWidth: 430,
-      minHeight: 390,
-      maxHeight: 645,
+   const pageFlip = new St.PageFlip(bookElement, {
+  width: 440,
+  height: 660,
+  size: "stretch",
+  minWidth: 300,
+  maxWidth: 560,
+  minHeight: 450,
+  maxHeight: 840,
       showCover: true,
       usePortrait: mobileMode,
       mobileScrollSupport: true,
