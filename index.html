@@ -30,18 +30,18 @@
     }
 
     .app {
-      width: min(100%, 1120px);
+      width: min(100%, 1140px);
       text-align: center;
     }
 
     .catalog-shell {
       position: relative;
       width: 100%;
-      min-height: 660px;
+      min-height: 760px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px 70px 36px;
+      padding: 38px 78px 52px;
       border-radius: 22px 22px 0 0;
       background:
         radial-gradient(circle at center, rgba(255,255,255,0.13), transparent 42%),
@@ -64,10 +64,10 @@
 
     .book-shadow {
       position: absolute;
-      width: min(82%, 760px);
-      height: 44px;
+      width: min(82%, 800px);
+      height: 46px;
       left: 50%;
-      bottom: 44px;
+      bottom: 54px;
       transform: translateX(-50%);
       background: radial-gradient(ellipse, rgba(0,0,0,0.65), transparent 70%);
       filter: blur(4px);
@@ -78,6 +78,8 @@
     .book-wrap {
       position: relative;
       z-index: 3;
+      transform-origin: center center;
+      transition: transform 0.22s ease;
     }
 
     #book {
@@ -104,7 +106,7 @@
     .special-page {
       width: 100%;
       height: 100%;
-      padding: 28px 24px;
+      padding: 26px 22px;
       background: linear-gradient(180deg, #ffffff, #faf7ef);
       color: #202020;
       display: flex;
@@ -115,39 +117,39 @@
     }
 
     .special-page .eyebrow {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 850;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #7a6b5d;
-      margin-bottom: 14px;
+      margin-bottom: 13px;
     }
 
     .special-page h3 {
-      margin: 0 0 12px;
-      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      margin: 0 0 11px;
+      font-size: clamp(1.22rem, 2.8vw, 1.75rem);
       line-height: 1.08;
       letter-spacing: -0.04em;
     }
 
     .special-page p {
-      margin: 0 auto 13px;
-      max-width: 300px;
+      margin: 0 auto 11px;
+      max-width: 295px;
       color: #5b5149;
-      line-height: 1.38;
-      font-size: 0.92rem;
+      line-height: 1.34;
+      font-size: 0.86rem;
     }
 
     .bonus-title {
-      font-size: clamp(1.28rem, 3.6vw, 1.95rem);
+      font-size: clamp(1.22rem, 3.4vw, 1.85rem);
       font-weight: 900;
       line-height: 1.08;
-      margin-top: 6px;
+      margin-top: 5px;
     }
 
     .price {
       margin-top: 2px;
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 850;
     }
 
@@ -159,12 +161,12 @@
       background: #1f1f1f;
       color: white;
       font-weight: 850;
-      padding: 12px 16px;
+      padding: 11px 15px;
       border-radius: 999px;
-      margin-top: 8px;
+      margin-top: 7px;
       box-shadow: 0 12px 24px rgba(0,0,0,0.18);
       transition: transform 0.18s ease, opacity 0.18s ease;
-      font-size: 0.92rem;
+      font-size: 0.86rem;
     }
 
     .cta-button:hover {
@@ -199,23 +201,23 @@
     }
 
     .side-arrow.left {
-      left: 16px;
+      left: 18px;
     }
 
     .side-arrow.right {
-      right: 16px;
+      right: 18px;
     }
 
     .control-bar {
       width: 100%;
-      min-height: 50px;
+      min-height: 58px;
       background: #252525;
       border-top: 1px solid rgba(255,255,255,0.08);
       border-radius: 0 0 22px 22px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 14px;
+      gap: 16px;
       padding: 10px 14px;
       box-shadow: 0 18px 45px rgba(0,0,0,0.28);
     }
@@ -224,11 +226,52 @@
       color: #f5efe7;
       font-size: 0.92rem;
       font-weight: 750;
+      min-width: 82px;
+      text-align: center;
     }
 
     .hint {
       color: rgba(255,255,255,0.62);
       font-size: 0.86rem;
+    }
+
+    .zoom-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .zoom-btn {
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: #fff;
+      font-size: 1.55rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .zoom-btn:hover {
+      background: rgba(255,255,255,0.10);
+    }
+
+    input[type="range"] {
+      width: min(28vw, 210px);
+      accent-color: #f3eee8;
+      cursor: pointer;
+    }
+
+    .zoom-label {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.82rem;
+      min-width: 44px;
+      text-align: left;
     }
 
     @media (max-width: 760px) {
@@ -259,13 +302,18 @@
 
       .control-bar {
         border-radius: 0 0 16px 16px;
-        gap: 8px;
+        gap: 7px;
         padding: 9px 8px;
         flex-direction: column;
       }
 
+      .zoom-group {
+        display: none;
+      }
+
       .counter {
         font-size: 0.84rem;
+        min-width: auto;
       }
 
       .hint {
@@ -277,18 +325,22 @@
       }
 
       .special-page h3 {
-        font-size: 1.35rem;
+        font-size: 1.25rem;
       }
 
       .special-page p {
-        font-size: 0.86rem;
-        line-height: 1.34;
-        margin-bottom: 10px;
+        font-size: 0.8rem;
+        line-height: 1.3;
+        margin-bottom: 9px;
+      }
+
+      .price {
+        font-size: 0.95rem;
       }
 
       .cta-button {
-        padding: 11px 14px;
-        font-size: 0.86rem;
+        padding: 10px 13px;
+        font-size: 0.82rem;
       }
     }
 
@@ -300,11 +352,11 @@
       }
 
       .special-page h3 {
-        font-size: 1.25rem;
+        font-size: 1.18rem;
       }
 
       .special-page p {
-        font-size: 0.82rem;
+        font-size: 0.78rem;
       }
     }
   </style>
@@ -321,8 +373,8 @@
       <div class="book-wrap">
         <div id="book">
           <div class="book-page" data-density="hard">
-  <img src="paginas/tictac-01.png" alt="Página de muestra de El Tic-Tac de la Música">
-</div>
+            <img src="paginas/tictac-01.png" alt="Página de muestra de El Tic-Tac de la Música">
+          </div>
 
           <div class="book-page">
             <img src="paginas/tictac-02.png" alt="Página de muestra de El Tic-Tac de la Música">
@@ -352,14 +404,14 @@
             <img src="paginas/bonus-02.png" alt="Página de muestra del bonus Modos griegos">
           </div>
 
-         <div class="book-page" data-density="hard">
-  <div class="special-page">
+          <div class="book-page" data-density="hard">
+            <div class="special-page">
               <h3>¿Quieres estudiar el recorrido completo?</h3>
               <p>
                 El Tic-Tac de la Música te guía paso a paso por ritmo,
                 pulso, compás, lectura y otras bases musicales.
               </p>
-              <p>También incluye el bonus <strong>Modos griegos – Ideas antes de las escalas</strong>.</p>
+              <p>Incluye el bonus <strong>Modos griegos – Ideas antes de las escalas</strong>.</p>
               <div class="price">Precio actual: $7</div>
               <a class="cta-button" href="https://basesdelamusica.gumroad.com/l/teoria-musical-practica-pdf" target="_blank" rel="noopener">
                 Adquirir El Tic-Tac
@@ -372,15 +424,28 @@
 
     <section class="control-bar" aria-label="Controles de lectura">
       <div class="counter" id="counter">1 / 8</div>
+
+      <div class="zoom-group">
+        <button class="zoom-btn" id="zoomOut" aria-label="Alejar">−</button>
+        <input id="zoomRange" type="range" min="100" max="130" value="115" step="5" aria-label="Zoom">
+        <button class="zoom-btn" id="zoomIn" aria-label="Acercar">+</button>
+        <span class="zoom-label" id="zoomLabel">115%</span>
+      </div>
+
       <div class="hint">Usa las flechas o arrastra la esquina de la página.</div>
     </section>
   </main>
 
   <script>
     const bookElement = document.getElementById("book");
+    const bookWrap = document.querySelector(".book-wrap");
     const counter = document.getElementById("counter");
+    const zoomRange = document.getElementById("zoomRange");
+    const zoomLabel = document.getElementById("zoomLabel");
     const totalPages = 8;
-const mobileMode = window.innerWidth <= 760;
+
+    const mobileMode = window.innerWidth <= 760;
+
     const pageFlip = new St.PageFlip(bookElement, {
       width: 360,
       height: 540,
@@ -414,10 +479,31 @@ const mobileMode = window.innerWidth <= 760;
       if (isMobileView()) {
         counter.textContent = `${pageNumber + 1} / ${totalPages}`;
       } else {
+        if (pageNumber === 0) {
+          counter.textContent = `1 / ${totalPages}`;
+          return;
+        }
+
+        if (pageNumber >= totalPages - 1) {
+          counter.textContent = `${totalPages} / ${totalPages}`;
+          return;
+        }
+
         const start = pageNumber + 1;
         const end = Math.min(pageNumber + 2, totalPages);
         counter.textContent = `${start}-${end} / ${totalPages}`;
       }
+    }
+
+    function applyZoom(value) {
+      if (isMobileView()) {
+        bookWrap.style.transform = "scale(1)";
+        return;
+      }
+
+      const scale = value / 100;
+      bookWrap.style.transform = `scale(${scale})`;
+      zoomLabel.textContent = `${value}%`;
     }
 
     pageFlip.on("flip", (e) => {
@@ -426,6 +512,7 @@ const mobileMode = window.innerWidth <= 760;
 
     window.addEventListener("resize", () => {
       updateCounter(pageFlip.getCurrentPageIndex());
+      applyZoom(Number(zoomRange.value));
     });
 
     document.getElementById("nextBtn").addEventListener("click", () => {
@@ -441,7 +528,24 @@ const mobileMode = window.innerWidth <= 760;
       if (e.key === "ArrowLeft") pageFlip.flipPrev("bottom");
     });
 
+    zoomRange.addEventListener("input", () => {
+      applyZoom(Number(zoomRange.value));
+    });
+
+    document.getElementById("zoomIn").addEventListener("click", () => {
+      const next = Math.min(Number(zoomRange.value) + 5, Number(zoomRange.max));
+      zoomRange.value = next;
+      applyZoom(next);
+    });
+
+    document.getElementById("zoomOut").addEventListener("click", () => {
+      const next = Math.max(Number(zoomRange.value) - 5, Number(zoomRange.min));
+      zoomRange.value = next;
+      applyZoom(next);
+    });
+
     updateCounter(0);
+    applyZoom(Number(zoomRange.value));
   </script>
 </body>
 </html>
