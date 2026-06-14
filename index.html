@@ -13,22 +13,24 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
       margin: 0;
-      min-height: 100vh;
+      min-height: 100%;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.96), transparent 42%),
-        linear-gradient(135deg, #f8f2e8, #eadcca);
-      color: #1f1f1f;
+      background: #171717;
+      color: #f6f1e8;
+    }
+
+    body {
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 22px;
+      align-items: center;
+      padding: 18px;
+      overflow-x: hidden;
     }
 
     .app {
-      width: min(100%, 1050px);
+      width: min(100%, 1100px);
       text-align: center;
     }
 
@@ -37,106 +39,81 @@
     }
 
     .intro h2 {
-      margin: 0 0 7px;
-      font-size: clamp(1.45rem, 3vw, 2.15rem);
+      margin: 0 0 6px;
+      font-size: clamp(1.35rem, 3vw, 2.15rem);
       line-height: 1.1;
       letter-spacing: -0.035em;
+      color: #fff8ee;
     }
 
     .intro p {
       margin: 0 auto;
-      max-width: 680px;
-      color: #6d6258;
-      font-size: clamp(0.95rem, 2vw, 1.05rem);
+      max-width: 650px;
+      color: rgba(255, 248, 238, 0.72);
+      font-size: clamp(0.92rem, 2vw, 1.05rem);
       line-height: 1.45;
     }
 
-    .tablet {
+    .catalog-shell {
       position: relative;
-      width: min(100%, 940px);
-      margin: 0 auto;
-      padding: clamp(12px, 2vw, 20px);
-      border-radius: 30px;
-      background: linear-gradient(145deg, #272727, #101010);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.20);
-      border: 1px solid rgba(255,255,255,0.16);
-    }
-
-    .screen {
-      position: relative;
-      min-height: 650px;
-      border-radius: 20px;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,0.9), transparent 55%),
-        #e9e2d8;
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-
-    .topbar {
-      height: 42px;
-      padding: 0 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(255,255,255,0.93);
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      color: #4c453e;
-      font-size: 0.82rem;
-      font-weight: 650;
-    }
-
-    .topbar span {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .topbar-icons {
-      display: flex;
-      gap: 7px;
-      margin-left: 12px;
-      flex-shrink: 0;
-    }
-
-    .topbar-icons i {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.28);
-      display: block;
-    }
-
-    .book-zone {
-      position: relative;
-      min-height: 555px;
+      width: 100%;
+      min-height: 620px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 22px 72px 12px;
+      padding: 18px 68px 22px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,0.13), transparent 42%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 38%),
+        linear-gradient(145deg, #252525, #111);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 25px 70px rgba(0,0,0,0.35);
       overflow: hidden;
+    }
+
+    .catalog-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.45), transparent 18%, transparent 82%, rgba(0,0,0,0.45));
+      pointer-events: none;
+    }
+
+    .book-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
     }
 
     .book-shadow {
       position: absolute;
-      width: min(70%, 650px);
-      height: 38px;
-      background: radial-gradient(ellipse, rgba(0,0,0,0.26), transparent 70%);
-      bottom: 26px;
+      width: min(82%, 720px);
+      height: 42px;
       left: 50%;
+      bottom: 34px;
       transform: translateX(-50%);
-      filter: blur(3px);
+      background: radial-gradient(ellipse, rgba(0,0,0,0.65), transparent 70%);
+      filter: blur(4px);
+      z-index: 1;
       pointer-events: none;
     }
 
     #book {
+      position: relative;
+      z-index: 3;
       margin: 0 auto;
     }
 
     .book-page {
       background: #fff;
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.10);
+      border: 1px solid rgba(0,0,0,0.12);
     }
 
     .book-page img {
@@ -145,13 +122,17 @@
       object-fit: contain;
       background: #fff;
       display: block;
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
     .special-page {
       width: 100%;
       height: 100%;
       padding: 34px 28px;
-      background: linear-gradient(180deg, #fff, #fbfaf6);
+      background:
+        linear-gradient(180deg, #ffffff, #faf7ef);
+      color: #202020;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -160,25 +141,25 @@
     }
 
     .special-page .eyebrow {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 850;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #74675a;
+      color: #7a6b5d;
       margin-bottom: 18px;
     }
 
     .special-page h3 {
       margin: 0 0 15px;
-      font-size: clamp(1.45rem, 3.5vw, 2.1rem);
+      font-size: clamp(1.45rem, 3.5vw, 2.12rem);
       line-height: 1.05;
       letter-spacing: -0.04em;
     }
 
     .special-page p {
-      margin: 0 auto 16px;
-      max-width: 300px;
-      color: #5d554d;
+      margin: 0 auto 15px;
+      max-width: 310px;
+      color: #5b5149;
       line-height: 1.45;
       font-size: 0.98rem;
     }
@@ -191,8 +172,8 @@
     }
 
     .price {
-      margin-top: 2px;
-      font-size: 1.1rem;
+      margin-top: 3px;
+      font-size: 1.12rem;
       font-weight: 850;
     }
 
@@ -202,38 +183,39 @@
       justify-content: center;
       text-decoration: none;
       background: #1f1f1f;
-      color: #fff;
+      color: white;
       font-weight: 850;
       padding: 13px 18px;
       border-radius: 999px;
       margin-top: 10px;
       box-shadow: 0 12px 24px rgba(0,0,0,0.18);
-      transition: transform 0.18s ease;
+      transition: transform 0.18s ease, opacity 0.18s ease;
     }
 
     .cta-button:hover {
       transform: translateY(-2px);
+      opacity: 0.92;
     }
 
     .side-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 54px;
-      height: 54px;
-      border-radius: 999px;
+      z-index: 10;
+      width: 52px;
+      height: 52px;
       border: 0;
-      background: rgba(255,255,255,0.96);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
       color: #1f1f1f;
       font-size: 2rem;
       line-height: 1;
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.20);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.35);
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 50;
       transition: transform 0.18s ease, opacity 0.18s ease;
     }
 
@@ -249,75 +231,84 @@
       right: 16px;
     }
 
-    .bottom-info {
-      height: 48px;
+    .bottom-bar {
+      margin-top: 12px;
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding-bottom: 10px;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255, 248, 238, 0.70);
+      font-size: 0.88rem;
     }
 
     .counter {
-      font-size: 0.86rem;
-      font-weight: 750;
-      color: #5f564d;
-      background: rgba(255,255,255,0.80);
-      border: 1px solid rgba(0,0,0,0.08);
+      padding: 7px 13px;
       border-radius: 999px;
-      padding: 8px 14px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(6px);
     }
 
     .hint {
-      margin: 12px auto 0;
-      color: #756b61;
-      font-size: 0.9rem;
+      color: rgba(255, 248, 238, 0.58);
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 760px) {
       body {
-        padding: 12px;
-      }
-
-      .tablet {
         padding: 10px;
-        border-radius: 22px;
+        align-items: flex-start;
       }
 
-      .screen {
-        min-height: 585px;
-        border-radius: 16px;
+      .intro {
+        margin-bottom: 12px;
       }
 
-      .book-zone {
-        min-height: 490px;
-        padding: 16px 46px 8px;
+      .catalog-shell {
+        min-height: 555px;
+        padding: 14px 42px 18px;
+        border-radius: 18px;
       }
 
       .side-arrow {
-        width: 42px;
-        height: 42px;
-        font-size: 1.6rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1.55rem;
       }
 
       .side-arrow.left {
-        left: 8px;
+        left: 7px;
       }
 
       .side-arrow.right {
-        right: 8px;
+        right: 7px;
       }
 
-      .topbar {
-        height: 38px;
-        font-size: 0.75rem;
+      .bottom-bar {
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 10px;
+        font-size: 0.82rem;
       }
 
       .special-page {
-        padding: 25px 18px;
+        padding: 26px 18px;
       }
 
-      .hint {
-        font-size: 0.82rem;
+      .special-page p {
+        font-size: 0.92rem;
+      }
+
+      .cta-button {
+        padding: 12px 15px;
+        font-size: 0.92rem;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .catalog-shell {
+        min-height: 515px;
+        padding-left: 36px;
+        padding-right: 36px;
       }
     }
   </style>
@@ -327,88 +318,74 @@
   <main class="app">
     <section class="intro">
       <h2>Mira por dentro El Tic-Tac de la Música</h2>
-      <p>Una pequeña muestra para que veas cómo está organizado el material antes de adquirirlo.</p>
+      <p>Hojea una pequeña muestra del material principal y del bonus incluido.</p>
     </section>
 
-    <section class="tablet">
-      <div class="screen">
-        <div class="topbar">
-          <span>Tic-Tac-de-la-Musica-vista-previa.pdf</span>
-          <div class="topbar-icons" aria-hidden="true">
-            <i></i><i></i><i></i>
+    <section class="catalog-shell" aria-label="Catálogo interactivo de El Tic-Tac de la Música">
+      <button class="side-arrow left" id="prevBtn" aria-label="Página anterior">‹</button>
+      <button class="side-arrow right" id="nextBtn" aria-label="Página siguiente">›</button>
+
+      <div class="book-shadow"></div>
+
+      <div class="book-wrap">
+        <div id="book">
+          <div class="book-page" data-density="hard">
+            <img src="paginas/tictac-01.png" alt="Página de muestra de El Tic-Tac de la Música">
           </div>
-        </div>
 
-        <button class="side-arrow left" id="prevBtn" aria-label="Página anterior">‹</button>
-        <button class="side-arrow right" id="nextBtn" aria-label="Página siguiente">›</button>
+          <div class="book-page">
+            <img src="paginas/tictac-02.png" alt="Página de muestra de El Tic-Tac de la Música">
+          </div>
 
-        <div class="book-zone">
-          <div class="book-shadow"></div>
+          <div class="book-page">
+            <img src="paginas/tictac-03.png" alt="Página de muestra de El Tic-Tac de la Música">
+          </div>
 
-          <div id="book">
-            <div class="book-page" data-density="hard">
-              <img src="paginas/tictac-01.png" alt="Página de muestra de El Tic-Tac de la Música">
-            </div>
+          <div class="book-page">
+            <img src="paginas/tictac-04.png" alt="Página de muestra de El Tic-Tac de la Música">
+          </div>
 
-            <div class="book-page">
-              <img src="paginas/tictac-02.png" alt="Página de muestra de El Tic-Tac de la Música">
-            </div>
-
-            <div class="book-page">
-              <img src="paginas/tictac-03.png" alt="Página de muestra de El Tic-Tac de la Música">
-            </div>
-
-            <div class="book-page">
-              <img src="paginas/tictac-04.png" alt="Página de muestra de El Tic-Tac de la Música">
-            </div>
-
-            <div class="book-page">
-              <div class="special-page">
-                <div class="eyebrow">También incluido en el material</div>
-                <p>Un vistazo al bonus:</p>
-                <div class="bonus-title">Modos griegos<br>Ideas antes de las escalas</div>
-              </div>
-            </div>
-
-            <div class="book-page">
-              <img src="paginas/bonus-01.png" alt="Página de muestra del bonus Modos griegos">
-            </div>
-
-            <div class="book-page">
-              <img src="paginas/bonus-02.png" alt="Página de muestra del bonus Modos griegos">
-            </div>
-
-            <div class="book-page" data-density="hard">
-              <div class="special-page">
-                <h3>¿Quieres estudiar el recorrido completo?</h3>
-                <p>
-                  El Tic-Tac de la Música está pensado para principiantes que necesitan ordenar
-                  ritmo, pulso, compás, lectura y otras bases musicales con más claridad.
-                </p>
-                <p>También incluye el bonus <strong>Modos griegos – Ideas antes de las escalas</strong>.</p>
-                <div class="price">Precio actual: $7</div>
-                <a class="cta-button" id="ctaLink" href="#" target="_blank" rel="noopener">
-                  Adquirir El Tic-Tac de la Música
-                </a>
-              </div>
+          <div class="book-page">
+            <div class="special-page">
+              <div class="eyebrow">También incluido en el material</div>
+              <p>Un vistazo al bonus:</p>
+              <div class="bonus-title">Modos griegos<br>Ideas antes de las escalas</div>
             </div>
           </div>
-        </div>
 
-        <div class="bottom-info">
-          <div class="counter" id="counter">Página 1 de 8</div>
+          <div class="book-page">
+            <img src="paginas/bonus-01.png" alt="Página de muestra del bonus Modos griegos">
+          </div>
+
+          <div class="book-page">
+            <img src="paginas/bonus-02.png" alt="Página de muestra del bonus Modos griegos">
+          </div>
+
+          <div class="book-page" data-density="hard">
+            <div class="special-page">
+              <h3>¿Quieres estudiar el recorrido completo?</h3>
+              <p>
+                El Tic-Tac de la Música está pensado para principiantes que necesitan ordenar
+                ritmo, pulso, compás, lectura y otras bases musicales con más claridad.
+              </p>
+              <p>También incluye el bonus <strong>Modos griegos – Ideas antes de las escalas</strong>.</p>
+              <div class="price">Precio actual: $7</div>
+              <a class="cta-button" id="ctaLink" href="https://basesdelamusica.gumroad.com/l/teoria-musical-practica-pdf" target="_blank" rel="noopener">
+                Adquirir El Tic-Tac de la Música
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <p class="hint">Usa las flechas o arrastra la esquina de la página.</p>
+    <div class="bottom-bar">
+      <div class="counter" id="counter">Página 1 de 8</div>
+      <div class="hint">Usa las flechas o arrastra la esquina de la página.</div>
+    </div>
   </main>
 
   <script>
-    const gumroadUrl = "https://basesdelamusica.gumroad.com/l/teoria-musical-practica-pdf";
-
-    document.getElementById("ctaLink").href = gumroadUrl;
-
     const bookElement = document.getElementById("book");
     const counter = document.getElementById("counter");
 
@@ -417,16 +394,16 @@
       height: 540,
       size: "stretch",
       minWidth: 260,
-      maxWidth: 420,
+      maxWidth: 430,
       minHeight: 390,
-      maxHeight: 630,
-      maxShadowOpacity: 0.45,
+      maxHeight: 645,
       showCover: true,
-      mobileScrollSupport: true,
-      flippingTime: 950,
       usePortrait: true,
-      startZIndex: 10,
-      drawShadow: true
+      mobileScrollSupport: true,
+      drawShadow: true,
+      maxShadowOpacity: 0.55,
+      flippingTime: 1100,
+      startZIndex: 10
     });
 
     const pageItems = document.querySelectorAll(".book-page");
