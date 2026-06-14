@@ -25,7 +25,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 18px;
+      padding: 12px;
       overflow-x: hidden;
     }
 
@@ -34,35 +34,15 @@
       text-align: center;
     }
 
-    .intro {
-      margin-bottom: 16px;
-    }
-
-    .intro h2 {
-      margin: 0 0 6px;
-      font-size: clamp(1.35rem, 3vw, 2.15rem);
-      line-height: 1.1;
-      letter-spacing: -0.035em;
-      color: #fff8ee;
-    }
-
-    .intro p {
-      margin: 0 auto;
-      max-width: 650px;
-      color: rgba(255, 248, 238, 0.72);
-      font-size: clamp(0.92rem, 2vw, 1.05rem);
-      line-height: 1.45;
-    }
-
     .catalog-shell {
       position: relative;
       width: 100%;
-      min-height: 620px;
+      min-height: 640px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 18px 68px 22px;
-      border-radius: 24px;
+      padding: 24px 68px 34px;
+      border-radius: 22px 22px 0 0;
       background:
         radial-gradient(circle at center, rgba(255,255,255,0.13), transparent 42%),
         radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 38%),
@@ -82,21 +62,12 @@
       pointer-events: none;
     }
 
-    .book-wrap {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-
     .book-shadow {
       position: absolute;
       width: min(82%, 720px);
       height: 42px;
       left: 50%;
-      bottom: 34px;
+      bottom: 44px;
       transform: translateX(-50%);
       background: radial-gradient(ellipse, rgba(0,0,0,0.65), transparent 70%);
       filter: blur(4px);
@@ -104,9 +75,15 @@
       pointer-events: none;
     }
 
-    #book {
+    .book-wrap {
       position: relative;
       z-index: 3;
+      transition: transform 0.25s ease;
+      transform-origin: center center;
+    }
+
+    #book {
+      position: relative;
       margin: 0 auto;
     }
 
@@ -130,8 +107,7 @@
       width: 100%;
       height: 100%;
       padding: 34px 28px;
-      background:
-        linear-gradient(180deg, #ffffff, #faf7ef);
+      background: linear-gradient(180deg, #ffffff, #faf7ef);
       color: #202020;
       display: flex;
       flex-direction: column;
@@ -231,42 +207,77 @@
       right: 16px;
     }
 
-    .bottom-bar {
-      margin-top: 12px;
+    .control-bar {
+      width: 100%;
+      min-height: 58px;
+      background: #252525;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-radius: 0 0 22px 22px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      gap: 12px;
-      color: rgba(255, 248, 238, 0.70);
-      font-size: 0.88rem;
+      justify-content: center;
+      gap: 14px;
+      padding: 10px 14px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.28);
     }
 
     .counter {
-      padding: 7px 13px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.10);
-      backdrop-filter: blur(6px);
+      color: #f5efe7;
+      font-size: 0.95rem;
+      font-weight: 750;
+      min-width: 90px;
+      text-align: center;
     }
 
-    .hint {
-      color: rgba(255, 248, 238, 0.58);
+    .zoom-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .zoom-btn {
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: #fff;
+      font-size: 1.55rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .zoom-btn:hover {
+      background: rgba(255,255,255,0.10);
+    }
+
+    input[type="range"] {
+      width: min(32vw, 210px);
+      accent-color: #f3eee8;
+      cursor: pointer;
+    }
+
+    .zoom-label {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.82rem;
+      min-width: 44px;
+      text-align: left;
     }
 
     @media (max-width: 760px) {
       body {
-        padding: 10px;
+        padding: 8px;
         align-items: flex-start;
       }
 
-      .intro {
-        margin-bottom: 12px;
-      }
-
       .catalog-shell {
-        min-height: 555px;
-        padding: 14px 42px 18px;
-        border-radius: 18px;
+        min-height: 560px;
+        padding: 14px 42px 22px;
+        border-radius: 16px 16px 0 0;
       }
 
       .side-arrow {
@@ -283,11 +294,24 @@
         right: 7px;
       }
 
-      .bottom-bar {
-        flex-direction: column;
-        gap: 5px;
-        margin-top: 10px;
-        font-size: 0.82rem;
+      .control-bar {
+        border-radius: 0 0 16px 16px;
+        gap: 8px;
+        padding: 9px 8px;
+        flex-wrap: wrap;
+      }
+
+      .counter {
+        font-size: 0.86rem;
+        min-width: 78px;
+      }
+
+      input[type="range"] {
+        width: 130px;
+      }
+
+      .zoom-label {
+        font-size: 0.78rem;
       }
 
       .special-page {
@@ -306,9 +330,13 @@
 
     @media (max-width: 390px) {
       .catalog-shell {
-        min-height: 515px;
+        min-height: 520px;
         padding-left: 36px;
         padding-right: 36px;
+      }
+
+      input[type="range"] {
+        width: 110px;
       }
     }
   </style>
@@ -316,18 +344,13 @@
 
 <body>
   <main class="app">
-    <section class="intro">
-      <h2>Mira por dentro El Tic-Tac de la Música</h2>
-      <p>Hojea una pequeña muestra del material principal y del bonus incluido.</p>
-    </section>
-
     <section class="catalog-shell" aria-label="Catálogo interactivo de El Tic-Tac de la Música">
       <button class="side-arrow left" id="prevBtn" aria-label="Página anterior">‹</button>
       <button class="side-arrow right" id="nextBtn" aria-label="Página siguiente">›</button>
 
       <div class="book-shadow"></div>
 
-      <div class="book-wrap">
+      <div class="book-wrap" id="bookWrap">
         <div id="book">
           <div class="book-page" data-density="hard">
             <img src="paginas/tictac-01.png" alt="Página de muestra de El Tic-Tac de la Música">
@@ -370,7 +393,7 @@
               </p>
               <p>También incluye el bonus <strong>Modos griegos – Ideas antes de las escalas</strong>.</p>
               <div class="price">Precio actual: $7</div>
-              <a class="cta-button" id="ctaLink" href="https://basesdelamusica.gumroad.com/l/teoria-musical-practica-pdf" target="_blank" rel="noopener">
+              <a class="cta-button" href="https://basesdelamusica.gumroad.com/l/teoria-musical-practica-pdf" target="_blank" rel="noopener">
                 Adquirir El Tic-Tac de la Música
               </a>
             </div>
@@ -379,15 +402,24 @@
       </div>
     </section>
 
-    <div class="bottom-bar">
-      <div class="counter" id="counter">Página 1 de 8</div>
-      <div class="hint">Usa las flechas o arrastra la esquina de la página.</div>
-    </div>
+    <section class="control-bar" aria-label="Controles de lectura">
+      <div class="counter" id="counter">1 / 8</div>
+
+      <div class="zoom-group">
+        <button class="zoom-btn" id="zoomOut" aria-label="Alejar">−</button>
+        <input id="zoomRange" type="range" min="90" max="135" value="100" step="5" aria-label="Zoom">
+        <button class="zoom-btn" id="zoomIn" aria-label="Acercar">+</button>
+        <span class="zoom-label" id="zoomLabel">100%</span>
+      </div>
+    </section>
   </main>
 
   <script>
     const bookElement = document.getElementById("book");
+    const bookWrap = document.getElementById("bookWrap");
     const counter = document.getElementById("counter");
+    const zoomRange = document.getElementById("zoomRange");
+    const zoomLabel = document.getElementById("zoomLabel");
 
     const pageFlip = new St.PageFlip(bookElement, {
       width: 360,
@@ -415,7 +447,7 @@
     }
 
     function updateCounter(pageNumber) {
-      counter.textContent = `Página ${pageNumber + 1} de 8`;
+      counter.textContent = `${pageNumber + 1} / 8`;
     }
 
     pageFlip.on("flip", (e) => {
@@ -435,7 +467,30 @@
       if (e.key === "ArrowLeft") pageFlip.flipPrev("bottom");
     });
 
+    function applyZoom(value) {
+      const scale = value / 100;
+      bookWrap.style.transform = `scale(${scale})`;
+      zoomLabel.textContent = `${value}%`;
+    }
+
+    zoomRange.addEventListener("input", () => {
+      applyZoom(Number(zoomRange.value));
+    });
+
+    document.getElementById("zoomIn").addEventListener("click", () => {
+      const next = Math.min(Number(zoomRange.value) + 5, Number(zoomRange.max));
+      zoomRange.value = next;
+      applyZoom(next);
+    });
+
+    document.getElementById("zoomOut").addEventListener("click", () => {
+      const next = Math.max(Number(zoomRange.value) - 5, Number(zoomRange.min));
+      zoomRange.value = next;
+      applyZoom(next);
+    });
+
     updateCounter(0);
+    applyZoom(100);
   </script>
 </body>
 </html>
