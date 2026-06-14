@@ -432,7 +432,7 @@
         <span class="zoom-label" id="zoomLabel">120%</span>
       </div>
 
-      <div class="hint">Usa las flechas o arrastra la esquina de la página.</div>
+      <div class="hint">Usa las flechas para pasar página.</div>
     </section>
   </main>
 
@@ -454,15 +454,15 @@
   maxWidth: 560,
   minHeight: 450,
   maxHeight: 840,
-      showCover: true,
-      usePortrait: mobileMode,
-      mobileScrollSupport: true,
-      drawShadow: true,
-      maxShadowOpacity: 0.55,
-      flippingTime: 1100,
-      startZIndex: 10
-    });
-
+  showCover: true,
+  usePortrait: mobileMode,
+  mobileScrollSupport: false,
+  useMouseEvents: false,
+  drawShadow: true,
+  maxShadowOpacity: 0.55,
+  flippingTime: 1100,
+  startZIndex: 10
+});
     const pageItems = document.querySelectorAll(".book-page");
 
     if (pageFlip.loadFromHTML) {
