@@ -17,8 +17,8 @@
       margin: 0;
       min-height: 100%;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #171717;
-      color: #f6f1e8;
+      background: transparent;
+      color: #17213a;
     }
 
     body {
@@ -37,19 +37,19 @@
     .catalog-shell {
       position: relative;
       width: 100%;
-      min-height: 860px;
+      min-height: 760px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 38px 90px 60px;
-      border-radius: 22px 22px 0 0;
+      padding: 26px 80px 38px;
+      border-radius: 24px 24px 0 0;
       background:
-        radial-gradient(circle at center, rgba(255,255,255,0.13), transparent 42%),
-        radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 38%),
-        linear-gradient(145deg, #252525, #111);
+        radial-gradient(circle at center, rgba(255,255,255,0.92), transparent 46%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 36%),
+        linear-gradient(145deg, #f6efe4, #e8dccb);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.06),
-        0 25px 70px rgba(0,0,0,0.35);
+        inset 0 1px 0 rgba(255,255,255,0.75),
+        0 20px 55px rgba(62, 45, 28, 0.18);
       overflow: hidden;
     }
 
@@ -58,7 +58,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,0.45), transparent 18%, transparent 82%, rgba(0,0,0,0.45));
+        linear-gradient(90deg, rgba(92,70,45,0.10), transparent 18%, transparent 82%, rgba(92,70,45,0.10));
       pointer-events: none;
     }
 
@@ -67,9 +67,9 @@
       width: min(82%, 800px);
       height: 46px;
       left: 50%;
-      bottom: 54px;
+      bottom: 44px;
       transform: translateX(-50%);
-      background: radial-gradient(ellipse, rgba(0,0,0,0.65), transparent 70%);
+      background: radial-gradient(ellipse, rgba(83, 61, 38, 0.28), transparent 70%);
       filter: blur(4px);
       z-index: 1;
       pointer-events: none;
@@ -158,13 +158,13 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      background: #1f1f1f;
+      background: #10182d;
       color: white;
       font-weight: 850;
       padding: 11px 15px;
       border-radius: 999px;
       margin-top: 7px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+      box-shadow: 0 12px 24px rgba(16, 24, 45, 0.20);
       transition: transform 0.18s ease, opacity 0.18s ease;
       font-size: 0.86rem;
     }
@@ -183,13 +183,13 @@
       height: 52px;
       border: 0;
       border-radius: 999px;
-      background: rgba(255,255,255,0.92);
-      color: #1f1f1f;
+      background: rgba(255,255,255,0.94);
+      color: #1f2740;
       font-size: 2rem;
       line-height: 1;
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 12px 26px rgba(0,0,0,0.35);
+      box-shadow: 0 10px 24px rgba(70, 50, 30, 0.20);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -211,8 +211,8 @@
     .control-bar {
       width: 100%;
       min-height: 96px;
-      background: #252525;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      background: #efe4d3;
+      border-top: 1px solid rgba(76, 55, 35, 0.12);
       border-radius: 0 0 22px 22px;
       display: flex;
       flex-direction: column;
@@ -220,11 +220,11 @@
       justify-content: center;
       gap: 7px;
       padding: 10px 14px 12px;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.28);
+      box-shadow: 0 16px 38px rgba(62, 45, 28, 0.14);
     }
 
     .counter {
-      color: #f5efe7;
+      color: #17213a;
       font-size: 0.92rem;
       font-weight: 750;
       text-align: center;
@@ -242,8 +242,8 @@
       height: 34px;
       border: 0;
       border-radius: 999px;
-      background: transparent;
-      color: #fff;
+      background: rgba(23, 33, 58, 0.08);
+      color: #17213a;
       font-size: 1.55rem;
       line-height: 1;
       cursor: pointer;
@@ -253,24 +253,24 @@
     }
 
     .zoom-btn:hover {
-      background: rgba(255,255,255,0.10);
+      background: rgba(23, 33, 58, 0.14);
     }
 
     input[type="range"] {
       width: min(28vw, 210px);
-      accent-color: #f3eee8;
+      accent-color: #17213a;
       cursor: pointer;
     }
 
     .zoom-label {
-      color: rgba(255,255,255,0.72);
+      color: rgba(23, 33, 58, 0.70);
       font-size: 0.82rem;
       min-width: 44px;
       text-align: left;
     }
 
     .hint {
-      color: rgba(255,255,255,0.62);
+      color: rgba(23, 33, 58, 0.62);
       font-size: 0.86rem;
     }
 
@@ -325,7 +325,7 @@
       .zoom-btn {
         width: 36px;
         height: 36px;
-        background: rgba(255,255,255,0.08);
+        background: rgba(23, 33, 58, 0.08);
       }
 
       .hint {
